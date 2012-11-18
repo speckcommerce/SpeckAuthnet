@@ -1,4 +1,4 @@
-SpeckPayAuthnet
+SpeckAuthnet
 ===========
 
 A generic module for adding Authorize.net Payments support to a ZF2 application.
