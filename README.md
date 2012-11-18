@@ -54,7 +54,7 @@ Move the module.config.php.dist to module.config.php and replace the following v
 Example Usage
 -------------
 ### The Client
-SpeckAuth API Name: 'SpeckAuthnet\Client'
+SpeckAuth API Name: `SpeckAuthnet\Client`
 
 The SpeckAuthnet module works off a single Client.  You will utilize this client to access the API's and make your calls to the Authnet endpoints.  The Client provides a fluent interface allowing you to chain method calls.
 <pre>
@@ -63,14 +63,14 @@ $client = $sm->get('SpeckAuthnet\Client');
 </pre>
 
 There are 3 ways to interact with the APIs via the client.
-* use setData to set a preconfigured array of key/value pairs on the API.  The keys are the same as the fields in the Authorize.net AIM documentation minus the `x_`
+* use `Client::setData($data)` to set a preconfigured array of key/value pairs on the API.  The keys are the same as the fields in the Authorize.net AIM documentation minus the `x_`
 * proxy calls to the API via the client
 * act on the API itself calling `Client::getApi()`
 
-### Credit Card
+### Credit Card 
 SpeckAuthnet API Name: `Aim\CreditCard`
 
-By default the authorization type of the CreditCard API is AUTH_ONLY, this can also be configured to be an AUTH_CAPTURE call to Authorize.net.  The SpeckAuthnet module contains support for all available fields, for a complete list you can look at the unit tests included with the module or consult the documentation available on the Authorize.net developer website.
+By default the authorization type of the CreditCard API is `AUTH_ONLY`, this can also be configured to be an `AUTH_CAPTURE` call to Authorize.net.  The SpeckAuthnet module contains support for all available fields, for a complete list you can look at the unit tests included with the module or consult the documentation available on the Authorize.net developer website.
 
 <pre>
 $paymentInfo = array(
@@ -100,6 +100,38 @@ $response = $client->api('Aim\CreditCard')
 echo $response->isApproved();
 </pre>
 
+### Prior Authorization Capture
+SpeckAuthnet API Name `Aim\PriorAuthCapture`
+
+Calling `AUTH_ONLY` and `PRIOR_AUTH_CAPTURE` represent a single complete transaction.  When you are ready to capture an authorized only transaction you will utilize this API call.  In addition this API supports splitting captures across multiple authorization requests: @see split tender in the AIM API documentation for details.
+
+<pre>
+$response = $client->api('Aim\PriorAuthCapture')
+	->setAmount($amountToCapture)
+	->setTransactionId($transactionId)
+	->send();
+echo $response->isSucces();
+</pre>
+
+### ECheck
+SpeckAuthnet API Name: `Aim\ECheck`
+
+Process check tranasctions with this API.
+
+NOTE: this requires additional set up within Authorize.net. 
+
+<pre>
+$response = $client->api('Aim\ECheck')
+	->setAmount('20.00')
+	->setBankAbaCode('160000000001')
+	->setBankAcctNum('1234567890')
+	->setBankAcctType('CHECKING')
+	->setBankName('Bank of America')
+	->send();	
+
+echo $response->isApproved();
+</pre>
+
 ### Void
 SpeckAuthnet API Name: `Aim\Void`
 
@@ -119,7 +151,9 @@ SpeckAuthnet API Name: `Aim\Credit`
 Credits cannot be applied to Authorization-Only transactions.  You can use the full card number, a masked last 4 digit number or simply a last 4 digit number (4111111111111111, XXXX4111, 4111). 
 
 NOTE: A credit can only be applied to a settled transaction unless you are doing an unlinked credit.
-NOTE: The default credit method is CC, this will automatically change to ECHECK if bankAbaCode or bankAcctNum is set, likewise you can change the method by calling `setMethod($method);`
+
+NOTE: The default credit method is `CC`, this will automatically change to `ECHECK` if bankAbaCode or bankAcctNum is set, likewise you can change the method by calling `setMethod($method);`
+
 NOTE: Unlinked Credits must exclude the transaction id and provide a full credit card number and expiration date.
 <pre>
 $response = $client->api('Aim\Credit')
