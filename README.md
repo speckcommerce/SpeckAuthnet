@@ -7,7 +7,7 @@ Introduction
 ------------
 
 SpeckAuthnet is a module that can be utilized outside of Speck Commerce to accept payments via the Authorize.net payment gateway.
-This module currently supports PayPal Payments Pro and Express Checkout API Operations.
+This module currently supports Authorize.net AIM API Operations.
 
 To get started visit the [Authorize.net Development Center](http://developer.authorize.net/)
 
