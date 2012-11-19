@@ -11,6 +11,11 @@ This module currently supports Authorize.net AIM API Operations.
 
 To get started visit the [Authorize.net Development Center](http://developer.authorize.net/)
 
+### Authorize.Net API Documentation
+* [AIM guide](http://developer.authorize.net/api/aim/)
+* [ECheck guide](http://www.authorize.net/support/eCheck.pdf)
+* [Credits / Returns guide](http://www.authorize.net/files/creditreturnsummary.pdf)
+
 To integrate with this module you will want to sign up for an account on Authorize.net. See the developer website for instructions.
 
 This module currently supports the following AIM calls with API version 3.1:
