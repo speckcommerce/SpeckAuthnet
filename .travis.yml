@@ -1,0 +1,17 @@
+language: php
+
+php:
+  - 5.3.3
+  - 5.3
+  - 5.4
+
+env:
+ - ZF2_PATH=./zf2/library
+
+before_install:
+ - mv config/module.config.php.dist config/module.config.php
+ - mv tests/TestConfig.php.travis tests/TestConfig.php
+ - cd tests; git clone --depth=1 https://github.com/zendframework/zf2.git
+
+script:
+ - phpunit
