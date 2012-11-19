@@ -10,7 +10,7 @@ env:
 
 before_install:
  - mv config/module.config.php.dist config/module.config.php
- - cd test; git clone --depth=1 https://github.com/zendframework/zf2.git
+ - cd tests; git clone --depth=1 https://github.com/zendframework/zf2.git
 
 script:
  - phpunit
