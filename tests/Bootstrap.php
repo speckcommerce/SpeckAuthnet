@@ -20,11 +20,7 @@ class Bootstrap
         if (is_readable(__DIR__ . '/TestConfig.php')) {
             $testConfig = include __DIR__ . '/TestConfig.php';
         } else {
-            $testConfig = array(
-                'modules' => array(
-                    'SpeckAuthnet'
-                ),
-            );//include __DIR__ . '/TestConfig.php.dist';
+            $testConfig = include __DIR__ . '/TestConfig.php.dist';
         }
 
         $zf2ModulePaths = array(dirname(dirname(__DIR__)));
