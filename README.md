@@ -38,7 +38,7 @@ The dependencies for SpeckCommerce are set up as Git submodules so you should no
 Contributors
 ------------
 
-* [Steve Rhoades] (https://github.com/SteveRhoades) (aka srhoades)
+* [Steve Rhoades] (https://github.com/SteveRhoades) (aka srhoades) [![Build Status](https://secure.travis-ci.org/steverhoades/SpeckAuthnet.png?branch=master)](https://travis-ci.org/steverhoades/SpeckAuthnet)
 
 
 Community

@@ -10,6 +10,7 @@ env:
 
 before_install:
  - mv config/module.config.php.dist config/module.config.php
+ - mv tests/TestConfig.php.travis tests/TestConfig.php
  - cd tests; git clone --depth=1 https://github.com/zendframework/zf2.git
 
 script:

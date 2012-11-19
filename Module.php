@@ -23,7 +23,7 @@ class Module implements AutoloaderProviderInterface
                     return $client;
                 },
                 'Aim\Hydrator' => function($sm) {
-                    $hydrator = new \Zend\StdLib\Hydrator\ClassMethods;
+                    $hydrator = new \Zend\Stdlib\Hydrator\ClassMethods;
                     $strategy = $sm->get('Aim\Element\LineItemStrategy');
                     $strategy->setHydrator($hydrator);
                     $hydrator->addStrategy('lineItems', $strategy);
