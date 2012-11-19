@@ -1,0 +1,28 @@
+{
+    "name": "speckcommerce/speck-authnet",
+    "description": "A generic module for adding Authorize.net support to a ZF2 application.",
+    "type": "library",
+    "keywords": [
+        "zf2"
+    ],
+    "homepage": "http://github.com/speckcommerce/SpeckAuthnet",
+    "authors": [
+        {
+            "name": "Stephen Rhoades",
+            "email": "steve@stephenrhoades.com",
+            "homepage": "http://www.stephenrhoades.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "2.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "SpeckAuthnet": "src/"
+        },
+        "classmap": [
+            "./"
+        ]
+    }
+}
