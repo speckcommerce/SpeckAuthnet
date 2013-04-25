@@ -13,6 +13,10 @@ class Module implements AutoloaderProviderInterface
     {
         return array(
             'factories' => array(
+            	'SpeckAuthnet\Cim\Client' => function($sm) {
+            		$client = new \SpeckAuthnet\Cim\Client();
+            		return $client;
+            	},
                 'SpeckAuthnet\Client' => function($sm) {
                     $httpClient = new \Zend\Http\Client;
                     $httpClient->setAdapter(new \Zend\Http\Client\Adapter\Curl);
@@ -35,12 +39,14 @@ class Module implements AutoloaderProviderInterface
                 'Aim\ResponseHydrator' => 'SpeckAuthnet\Api\Aim\ResponseHydrator',
                 'Aim\Element\LineItemStrategy' => 'SpeckAuthnet\Api\Aim\Element\LineItemStrategy',
                 'Aim\LineItem' => '\SpeckAuthnet\Api\Aim\LineItem',
-                'Aim\CreditCard' => "SpeckAuthnet\Api\Aim\CreditCard",
+                'Aim\CreditCard' => 'SpeckAuthnet\Api\Aim\CreditCard',
                 'Aim\ECheck' => 'SpeckAuthnet\Api\Aim\ECheck',
                 'Aim\Void' => 'SpeckAuthnet\Api\Aim\Void',
                 'Aim\CaptureOnly' => 'SpeckAuthnet\Api\Aim\CaptureOnly',
                 'Aim\PriorAuthCapture' => 'SpeckAuthnet\Api\Aim\PriorAuthCapture',
-                'Aim\Credit' => 'SpeckAuthnet\Api\Aim\Credit'
+                'Aim\Credit' => 'SpeckAuthnet\Api\Aim\Credit',
+            	'Cim\Customer\Profile' => 'SpeckAuthnet\Api\Cim\Customer\Profile',
+            	'Cim\Customer\Payment\Profile' => 'SpeckAuthnet\Api\Cim\Customer\Payment\Profile'
             ),
             'shared' => array(
                 'Aim\Credit' => false,
@@ -59,6 +65,10 @@ class Module implements AutoloaderProviderInterface
                         $instance->setMode($apiConfig['mode']);
                         $instance->setTranKey($apiConfig['tran_key']);
                         $instance->setLogin($apiConfig['login']);
+
+                        if($instance instanceof \SpeckAuthnet\Api\Cim\ConfigAwareInterface) {
+                        	$instance->setValidationMode($apiConfig['validationMode']);
+                        }
                     }
                 }
             )
