@@ -13,6 +13,12 @@ class Profile
 	const CUSTOMER_TYPE_BUSINESS = "business";
 
 	/**
+	 * The customer profile Id
+	 * @var integer
+	 */
+	protected $_customerProfileId;
+
+	/**
 	 * The Type of customer
 	 * @var string
 	 */
@@ -97,6 +103,23 @@ class Profile
 	 */
 	public function setPayment(\SpeckAuthnet\Entity\Payment\PaymentInterface $payment) {
 		$this->payment = $payment;
+		return $this;
+	}
+
+	/**
+	 * @return number
+	 */
+	public function getCustomerProfileId()
+	{
+		return $this->_customerProfileId;
+	}
+
+	/**
+	 * @param integer $id
+	 * @return \SpeckAuthnet\Entity\Customer\Payment\Profile
+	 */
+	public function setCustomerProfileId($id) {
+		$this->_customerProfileId = $id;
 		return $this;
 	}
 

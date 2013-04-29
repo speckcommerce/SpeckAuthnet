@@ -119,4 +119,12 @@ abstract class AbstractBase implements \SpeckAuthnet\Api\RequestInterface, \Zend
 	{
 		$this->sm = $serviceManager;
 	}
+
+	/**
+	 * @return \Zend\ServiceManager\ServiceManager
+	 */
+	public function getServiceManager()
+	{
+		return $this->sm;
+	}
 }

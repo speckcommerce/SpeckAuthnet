@@ -28,6 +28,62 @@ class Profile extends \SpeckAuthnet\Api\Cim\AbstractBase
 	 */
 	protected $validationMode;
 
+	/**
+	 * Return a transaction object
+	 * @return \SpeckAuthnet\Entity\Transaction\Authorize
+	 */
+	public function authorize() {
+		$retval = new \SpeckAuthnet\Entity\Transaction\Authorize();
+		return $this->_initTransactionObject($retval);
+	}
+
+	protected function _initTransactionObject($obj) {
+		$obj->setCustomerPaymentProfileId($this->getCustomerPaymentProfile()->getPaymentProfileId());
+		$obj->setCustomerProfileId($this->getCustomerProfileId());
+		$obj->setSoapClient($this->getSoapClient());
+		$obj->setServiceManager($this->getServiceManager());
+
+		return $obj;
+	}
+	/**
+	 * Return a transaction object
+	 * @return \SpeckAuthnet\Entity\Transaction\AuthCapture
+	 */
+	public function authCapture()
+	{
+		$retval = new \SpeckAuthnet\Entity\Transaction\AuthCapture();
+		return $this->_initTransactionObject($retval);
+	}
+
+	public function delete($customerProfileId = null, $paymentProfileId = null)
+	{
+		$client = $this->getSoapClient();
+
+		if(empty($this->customerProfileId) && is_null($customerProfileId)) {
+			throw new CimApiException("You must provide a customer profile ID to use this API call");
+		}
+
+		if((empty($this->paymentProfile) || ($this->getCustomerPaymentProfile()->getPaymentProfileId() == "")) && is_null($paymentProfileId)) {
+			throw new CimApiException("You must provide a customer payment profile ID to use this API call");
+		}
+
+		$response = $client->deleteCustomerPaymentProfile(array(
+				'customerProfileId' => is_null($customerProfileId) ? $this->getCustomerProfileId() : $customerProfileId,
+				'customerPaymentProfileId' => is_null($paymentProfileId) ? $this->getCustomerPaymentProfile()->getPaymentProfileId() : $paymentProfileId
+		));
+
+		if($response->DeleteCustomerPaymentProfileResult->resultCode != "Ok") {
+
+			if($response->DeleteCustomerPaymentProfileResult->messages->MessagesTypeMessage->code == "E00040") {
+				throw new ValidationException($response->DeleteCustomerPaymentProfileResult->messages->MessagesTypeMessage->text);
+			}
+
+			throw new CimApiException("Failed to delete customer payment profile: {$response->GetCustomerPaymentProfileResult->messages->MessagesTypeMessage->text}");
+		}
+
+		return true;
+	}
+
 	public function load($customerProfileId = null, $paymentProfileId = null)
 	{
 		$client = $this->getSoapClient();
@@ -111,12 +167,34 @@ class Profile extends \SpeckAuthnet\Api\Cim\AbstractBase
 		return $this->customerProfileId;
 	}
 
+	/**
+	 * @param integer $id
+	 * @return \SpeckAuthnet\Api\Cim\Customer\Payment\Profile
+	 */
 	public function setCustomerProfileId($id) {
 		$this->customerProfileId = $id;
+		return $this;
 	}
 
+	/**
+	 * @param \SpeckAuthnet\Entity\Customer\Payment\Profile $profile
+	 * @return \SpeckAuthnet\Api\Cim\Customer\Payment\Profile
+	 */
 	public function setCustomerPaymentProfile(\SpeckAuthnet\Entity\Customer\Payment\Profile $profile) {
 		$this->paymentProfile = $profile;
+		return $this;
+	}
+
+	/**
+	 * @param integer $id
+	 * @return \SpeckAuthnet\Api\Cim\Customer\Payment\Profile
+	 */
+	public function setCustomerPaymentProfileId($id) {
+		if(!$this->paymentProfile) {
+			$this->paymentProfile = new \SpeckAuthnet\Entity\Customer\Payment\Profile();
+		}
+		$this->paymentProfile->setPaymentProfileId($id);
+		return $this;
 	}
 
 	/**

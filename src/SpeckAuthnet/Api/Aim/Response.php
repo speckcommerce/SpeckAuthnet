@@ -60,22 +60,22 @@ class Response extends AbstractResponse
     /**
      * get the error state
      *
-     * @return boolean 
+     * @return boolean
      */
-    public function getError() 
+    public function getError()
     {
         return $this->error;
     }
-    
+
     /**
      * Set the error response field
      *
-     * @param Boolean $error 
+     * @param Boolean $error
      */
-    public function setError($error) 
+    public function setError($error)
     {
         $this->error = $error;
-    
+
         return $this;
     }
 
@@ -109,6 +109,7 @@ class Response extends AbstractResponse
     public function setAccountNumber($accountNumber)
     {
         $this->accountNumber = $accountNumber;
+        return $this;
     }
 
     public function getAccountNumber()
@@ -119,6 +120,7 @@ class Response extends AbstractResponse
     public function setAddress($address)
     {
         $this->address = $address;
+        return $this;
     }
 
     public function getAddress()
@@ -129,6 +131,7 @@ class Response extends AbstractResponse
     public function setAmount($amount)
     {
         $this->amount = $amount;
+        return $this;
     }
 
     public function getAmount()
@@ -139,6 +142,7 @@ class Response extends AbstractResponse
     public function setApproved($approved)
     {
         $this->approved = $approved;
+        return $this;
     }
 
     public function getApproved()
@@ -154,6 +158,7 @@ class Response extends AbstractResponse
     public function setAuthorizationCode($authorizationCode)
     {
         $this->authorizationCode = $authorizationCode;
+        return $this;
     }
 
     public function getAuthorizationCode()
@@ -164,6 +169,7 @@ class Response extends AbstractResponse
     public function setAvsResponse($avsResponse)
     {
         $this->avsResponse = $avsResponse;
+        return $this;
     }
 
     public function getAvsResponse()
@@ -174,6 +180,7 @@ class Response extends AbstractResponse
     public function setBalanceOnCard($balanceOnCard)
     {
         $this->balanceOnCard = $balanceOnCard;
+        return $this;
     }
 
     public function getBalanceOnCard()
@@ -184,6 +191,7 @@ class Response extends AbstractResponse
     public function setCardCodeResponse($cardCodeResponse)
     {
         $this->cardCodeResponse = $cardCodeResponse;
+        return $this;
     }
 
     public function getCardCodeResponse()
@@ -194,6 +202,7 @@ class Response extends AbstractResponse
     public function setCardType($cardType)
     {
         $this->cardType = $cardType;
+        return $this;
     }
 
     public function getCardType()
@@ -204,6 +213,7 @@ class Response extends AbstractResponse
     public function setCavvResponse($cavvResponse)
     {
         $this->cavvResponse = $cavvResponse;
+        return $this;
     }
 
     public function getCavvResponse()
@@ -214,6 +224,7 @@ class Response extends AbstractResponse
     public function setCity($city)
     {
         $this->city = $city;
+        return $this;
     }
 
     public function getCity()
@@ -224,6 +235,7 @@ class Response extends AbstractResponse
     public function setCompany($company)
     {
         $this->company = $company;
+        return $this;
     }
 
     public function getCompany()
@@ -234,6 +246,7 @@ class Response extends AbstractResponse
     public function setCountry($country)
     {
         $this->country = $country;
+        return $this;
     }
 
     public function getCountry()
@@ -244,6 +257,7 @@ class Response extends AbstractResponse
     public function setCustomerId($customerId)
     {
         $this->customerId = $customerId;
+        return $this;
     }
 
     public function getCustomerId()
@@ -254,6 +268,7 @@ class Response extends AbstractResponse
     public function setDeclined($declined)
     {
         $this->declined = $declined;
+        return $this;
     }
 
     public function getDeclined()
@@ -269,6 +284,7 @@ class Response extends AbstractResponse
     public function setDescription($description)
     {
         $this->description = $description;
+        return $this;
     }
 
     public function getDescription()
@@ -279,6 +295,7 @@ class Response extends AbstractResponse
     public function setDuty($duty)
     {
         $this->duty = $duty;
+        return $this;
     }
 
     public function getDuty()
@@ -289,6 +306,7 @@ class Response extends AbstractResponse
     public function setEmailAddress($emailAddress)
     {
         $this->emailAddress = $emailAddress;
+        return $this;
     }
 
     public function getEmailAddress()
@@ -299,6 +317,7 @@ class Response extends AbstractResponse
     public function setFax($fax)
     {
         $this->fax = $fax;
+        return $this;
     }
 
     public function getFax()
@@ -309,6 +328,7 @@ class Response extends AbstractResponse
     public function setFirstName($firstName)
     {
         $this->firstName = $firstName;
+        return $this;
     }
 
     public function getFirstName()
@@ -319,6 +339,7 @@ class Response extends AbstractResponse
     public function setFreight($freight)
     {
         $this->freight = $freight;
+        return $this;
     }
 
     public function getFreight()
@@ -329,6 +350,7 @@ class Response extends AbstractResponse
     public function setHeld($held)
     {
         $this->held = $held;
+        return $this;
     }
 
     public function getHeld()
@@ -344,6 +366,7 @@ class Response extends AbstractResponse
     public function setInvoiceNumber($invoiceNumber)
     {
         $this->invoiceNumber = $invoiceNumber;
+        return $this;
     }
 
     public function getInvoiceNumber()
@@ -354,6 +377,7 @@ class Response extends AbstractResponse
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
+        return $this;
     }
 
     public function getLastName()
@@ -364,6 +388,7 @@ class Response extends AbstractResponse
     public function setMd5Hash($md5Hash)
     {
         $this->md5Hash = $md5Hash;
+        return $this;
     }
 
     public function getMd5Hash()
@@ -374,6 +399,7 @@ class Response extends AbstractResponse
     public function setMethod($method)
     {
         $this->method = $method;
+        return $this;
     }
 
     public function getMethod()
@@ -384,6 +410,7 @@ class Response extends AbstractResponse
     public function setPhone($phone)
     {
         $this->phone = $phone;
+        return $this;
     }
 
     public function getPhone()
@@ -394,6 +421,7 @@ class Response extends AbstractResponse
     public function setPurchaseOrderNumber($purchaseOrderNumber)
     {
         $this->purchaseOrderNumber = $purchaseOrderNumber;
+        return $this;
     }
 
     public function getPurchaseOrderNumber()
@@ -404,6 +432,7 @@ class Response extends AbstractResponse
     public function setRequestedAmount($requestedAmount)
     {
         $this->requestedAmount = $requestedAmount;
+        return $this;
     }
 
     public function getRequestedAmount()
@@ -414,6 +443,7 @@ class Response extends AbstractResponse
     public function setResponseCode($responseCode)
     {
         $this->responseCode = $responseCode;
+        return $this;
     }
 
     public function getResponseCode()
@@ -424,6 +454,7 @@ class Response extends AbstractResponse
     public function setResponseReasonCode($responseReasonCode)
     {
         $this->responseReasonCode = $responseReasonCode;
+        return $this;
     }
 
     public function getResponseReasonCode()
@@ -434,6 +465,7 @@ class Response extends AbstractResponse
     public function setResponseReasonText($responseReasonText)
     {
         $this->responseReasonText = $responseReasonText;
+        return $this;
     }
 
     public function getResponseReasonText()
@@ -444,6 +476,7 @@ class Response extends AbstractResponse
     public function setResponseSubcode($responseSubcode)
     {
         $this->responseSubcode = $responseSubcode;
+        return $this;
     }
 
     public function getResponseSubcode()
@@ -454,6 +487,7 @@ class Response extends AbstractResponse
     public function setShipToAddress($shipToAddress)
     {
         $this->shipToAddress = $shipToAddress;
+        return $this;
     }
 
     public function getShipToAddress()
@@ -464,6 +498,7 @@ class Response extends AbstractResponse
     public function setShipToCity($shipToCity)
     {
         $this->shipToCity = $shipToCity;
+        return $this;
     }
 
     public function getShipToCity()
@@ -474,6 +509,7 @@ class Response extends AbstractResponse
     public function setShipToCompany($shipToCompany)
     {
         $this->shipToCompany = $shipToCompany;
+        return $this;
     }
 
     public function getShipToCompany()
@@ -484,6 +520,7 @@ class Response extends AbstractResponse
     public function setShipToCountry($shipToCountry)
     {
         $this->shipToCountry = $shipToCountry;
+        return $this;
     }
 
     public function getShipToCountry()
@@ -494,6 +531,7 @@ class Response extends AbstractResponse
     public function setShipToFirstName($shipToFirstName)
     {
         $this->shipToFirstName = $shipToFirstName;
+        return $this;
     }
 
     public function getShipToFirstName()
@@ -504,6 +542,7 @@ class Response extends AbstractResponse
     public function setShipToLastName($shipToLastName)
     {
         $this->shipToLastName = $shipToLastName;
+        return $this;
     }
 
     public function getShipToLastName()
@@ -514,6 +553,7 @@ class Response extends AbstractResponse
     public function setShipToState($shipToState)
     {
         $this->shipToState = $shipToState;
+        return $this;
     }
 
     public function getShipToState()
@@ -524,6 +564,7 @@ class Response extends AbstractResponse
     public function setShipToZipCode($shipToZipCode)
     {
         $this->shipToZipCode = $shipToZipCode;
+        return $this;
     }
 
     public function getShipToZipCode()
@@ -534,6 +575,7 @@ class Response extends AbstractResponse
     public function setSplitTenderId($splitTenderId)
     {
         $this->splitTenderId = $splitTenderId;
+        return $this;
     }
 
     public function getSplitTenderId()
@@ -544,6 +586,7 @@ class Response extends AbstractResponse
     public function setState($state)
     {
         $this->state = $state;
+        return $this;
     }
 
     public function getState()
@@ -554,6 +597,7 @@ class Response extends AbstractResponse
     public function setTax($tax)
     {
         $this->tax = $tax;
+        return $this;
     }
 
     public function getTax()
@@ -564,6 +608,7 @@ class Response extends AbstractResponse
     public function setTaxExempt($taxExempt)
     {
         $this->taxExempt = $taxExempt;
+        return $this;
     }
 
     public function getTaxExempt()
@@ -574,6 +619,7 @@ class Response extends AbstractResponse
     public function setTransactionId($transactionId)
     {
         $this->transactionId = $transactionId;
+        return $this;
     }
 
     public function getTransactionId()
@@ -584,6 +630,7 @@ class Response extends AbstractResponse
     public function setTransactionType($transactionType)
     {
         $this->transactionType = $transactionType;
+        return $this;
     }
 
     public function getTransactionType()
@@ -594,6 +641,7 @@ class Response extends AbstractResponse
     public function setZipCode($zipCode)
     {
         $this->zipCode = $zipCode;
+        return $this;
     }
 
     public function getZipCode()
