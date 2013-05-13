@@ -1,5 +1,5 @@
 {
-    "name": "speckcommerce/speck-authnet",
+    "name": "coogle/SpeckAuthnet",
     "description": "A generic module for adding Authorize.net support to a ZF2 application.",
     "type": "library",
     "keywords": [
@@ -27,7 +27,7 @@
             "SpeckAuthnet": "src/"
         },
         "classmap": [
-            "./"
+            "./Module.php"
         ]
     }
 }
