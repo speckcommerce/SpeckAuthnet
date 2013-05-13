@@ -62,11 +62,13 @@ class Profile extends \SpeckAuthnet\Api\Cim\AbstractBase
 
 	public function setCustomerProfileId($id) {
 		$this->customerProfileId = $id;
+		return $this;
 	}
 
 	public function setMerchantCustomerId($id)
 	{
 		$this->merchantCustomerId = $id;
+		return $this;
 	}
 
 	public function getMerchantCustomerId()
@@ -76,6 +78,7 @@ class Profile extends \SpeckAuthnet\Api\Cim\AbstractBase
 
 	public function setDescription($desc) {
 		$this->description = $desc;
+		return $this;
 	}
 
 	public function getDescription() {
@@ -84,6 +87,7 @@ class Profile extends \SpeckAuthnet\Api\Cim\AbstractBase
 
 	public function setEmail($email) {
 		$this->email = $email;
+		return $this;
 	}
 
 	public function getEmail() {
