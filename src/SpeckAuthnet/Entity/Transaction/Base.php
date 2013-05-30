@@ -6,6 +6,7 @@ use Zend\ServiceManager\ServiceManagerAwareInterface;
 use SpeckAuthnet\Api\Cim\Transaction\Response\Hydrator;
 use SpeckAuthnet\Api\Cim\Exception as CimApiException;
 use SpeckAuthnet\Api\Cim\Validation\Exception as ValidationException;
+use SpeckAuthnet\Api\Cim\Transaction\DeclinedException;
 
 abstract class Base implements \SpeckAuthnet\Entity\Transaction\TransactionInterface, ServiceManagerAwareInterface
 {
@@ -454,11 +455,16 @@ abstract class Base implements \SpeckAuthnet\Entity\Transaction\TransactionInter
 
 		if($response->CreateCustomerProfileTransactionResult->resultCode != "Ok") {
 
-			if($response->CreateCustomerProfileTransactionResult->messages->MessagesTypeMessage->code == "E00040") {
-				throw new ValidationException($response->CreateCustomerProfileTransactionResult->messages->MessagesTypeMessage->text);
+			switch($response->CreateCustomerProfileTransactionResult->messages->MessagesTypeMessage->code) {
+				case "E00040":
+					throw new ValidationException($response->CreateCustomerProfileTransactionResult->messages->MessagesTypeMessage->text);
+				case "E00027":
+					// Transaction wasn't approved, let things go on as they were and let the upper levels deal with it.
+					break;
+				default:
+					throw new CimApiException("Error: {$response->CreateCustomerProfileTransactionResult->messages->MessagesTypeMessage->text}");
 			}
 
-			throw new CimApiException("Failed to delete customer payment profile: {$response->CreateCustomerProfileTransactionResult->messages->MessagesTypeMessage->text}");
 		}
 
 		$hydrator = new Hydrator();
